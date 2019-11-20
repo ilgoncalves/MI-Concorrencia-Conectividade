@@ -1,5 +1,4 @@
 # MI-Concorrencia-Conectividade
-<h1>Primeiro Problema</h1>
 <p align="center"><img src="https://media2.giphy.com/media/i4jKn7itdV2Tvjzj6Y/giphy.gif"></p>
 
 # Motivação

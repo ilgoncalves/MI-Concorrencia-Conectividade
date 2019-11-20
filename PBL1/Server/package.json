@@ -1,0 +1,28 @@
+{
+  "name": "semana-omnistack-9.0",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilgoncalves/MI-Concorrencia-Conectividade"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ilgoncalves/MI-Concorrencia-Conectividade/issues"
+  },
+  "homepage": "https://github.com/ilgoncalves/MI-Concorrencia-Conectividade#readme",
+  "dependencies": {
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.3"
+  }
+}
