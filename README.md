@@ -2,7 +2,7 @@
 <p align="center"><img src="https://media2.giphy.com/media/i4jKn7itdV2Tvjzj6Y/giphy.gif"></p>
 
 # Motivação
-O intuito foi fazer entidades presentes no projeto se comunicarem através do TCP/IP utilizando o protocolo REST.
+O intuito foi com que entidades presentes no projeto se comunicassem através do TCP/IP utilizando o protocolo REST.
 
 # Um pouco sobre o projeto...
 O Projeto que se consiste em:
