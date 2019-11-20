@@ -7,11 +7,12 @@ O intuito foi fazer entidades presentes no projeto se comunicarem através do TC
 # Um pouco sobre o projeto...
 O Projeto que se consiste em:
 <ul>
-  <li>'Um broker' feito em node.js,</li>
-  <li>**Uma Aplicação** desenvolvida em React native</li>
-  <li>**Dispositivos fictícios** para emição de dados fictícios, e acionamentos de atuadores fictícios</li>
-  <li>**Dispositivo (ESP-8266)** para emição de dados reais e acionametos de atuadores reais</li>
+  <li>Um broker feito em node.js</li>
+  <li>Uma Aplicação desenvolvida em React native</li>
+  <li>Dispositivos fictícios para emição de dados fictícios, e acionamentos de atuadores fictícios</li>
+  <li>Dispositivo (ESP-8266) para emição de dados reais e acionametos de atuadores reais</li>
 </ul>
+
 # Destinação
 O projeto foi feito como 1ª avaliação para o Módulo integrador de Concorrência e Conectividade 2019.2.
 
