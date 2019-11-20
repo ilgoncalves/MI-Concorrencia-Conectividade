@@ -17,7 +17,7 @@ O Projeto que se consiste em:
 O projeto foi feito como 1ª avaliação para o Módulo integrador de Concorrência e Conectividade 2019.2.
 
 # Trabalhos futuros
-Como trabalhos futuros planejo:
+<h1>Como trabalhos futuros planejo:</h1>
 - 
 -
 
