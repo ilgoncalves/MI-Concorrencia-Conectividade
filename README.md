@@ -17,9 +17,8 @@ O Projeto que se consiste em:
 O projeto foi feito como 1ª avaliação para o Módulo integrador de Concorrência e Conectividade 2019.2.
 
 # Trabalhos futuros
-<h1>Como trabalhos futuros planejo:</h1>
-- 
--
+<h4>Como trabalhos futuros planejo:</h4>
+
 
 # Contributors
 <a href="https://github.com/ilgoncalves/MI-Concorrencia-Conectividade/graphs/contributors">
