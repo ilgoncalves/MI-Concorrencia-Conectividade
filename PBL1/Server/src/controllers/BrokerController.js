@@ -27,27 +27,46 @@ const UserTopic = require('../models/UserTopic');
 module.exports = {
   async subscribe(req, res) {
     let { topicName, user_id, description_device } = req.body;
-    let topic = await Topic.findOne({ topicName });
 
+    //é feito essa verificação poq o metodo de envio do esp8266 é diferente
+    if (!topicName && !description_device) {
+      topicName = req.query.topicName;
+      description_device = req.query.description_device;
+    }
+
+    let topic = await Topic.findOne({ topicName });
     if (!topic) {
       topic = await Topic.create({ topicName });
     }
-
     user_id = await User.findOne({ _id: user_id })
-
     if (user_id) {
       user_id = user_id._id
     }
-
     if (user_id) {
       const user_topic = await UserTopic.create({ user_id, topic_id: topic._id });
       res.json(user_topic);
     } else if (description_device) {
-      const device = await Device.create({ description: description_device, topic_id: topic._id });
+      let device = await Device.findOne({ description: description_device, topic_id: topic._id });
+      console.log('Device achado', device)
+      if (!device) {
+        device = await Device.create({ description: description_device, topic_id: topic._id });
+        console.log('Device criado', device)
+      }
       res.json(device);
     } else {
       res.status(400).send('Não foi identificado nem um usuario nem um dispositivo.');
     }
+  },
 
+  async publish(req, res) {
+    let { topicName, description_device } = req.body;
+    console.log("req", req.query)
+    if (!topicName && !description_device) {
+      topicName = req.query.topicName;
+      description_device = req.query.description_device;
+    }
+    console.log('Body', topicName, description_device)
+
+    res.json({ ok: 'as' })
   }
 }

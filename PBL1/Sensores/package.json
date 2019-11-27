@@ -1,0 +1,15 @@
+{
+  "name": "sensores",
+  "version": "1.0.0",
+  "description": "",
+  "main": "probe_Temperature.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node probe_Temperature.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.0"
+  }
+}

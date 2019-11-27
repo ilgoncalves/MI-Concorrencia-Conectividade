@@ -7,8 +7,8 @@ const routes = express.Router();
 
 
 // pub/sub
-routes.post('/subscribe', BrokerController.store)
-// routes.post('/publish', BrokerController)
+routes.post('/subscribe', BrokerController.subscribe)
+routes.post('/publish', BrokerController.publish)
 
 // session
 routes.post('/sessions', SessionController.store)
