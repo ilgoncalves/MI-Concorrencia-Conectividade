@@ -59,14 +59,17 @@ module.exports = {
   },
 
   async publish(req, res) {
-    let { topicName, description_device } = req.body;
-    console.log("req", req.query)
-    if (!topicName && !description_device) {
-      topicName = req.query.topicName;
-      description_device = req.query.description_device;
-    }
-    console.log('Body', topicName, description_device)
-
+    const { message, topicName } = req.body;
+    console.log('Usuarios conectados', req.connectedUsers);
+    let topic = await Topic.findOne({ topicName });
+    //pega o id do topico e acha o device ou o usuario 
+    let devices = await Device.find({ topic_id: topic._id });
+    console.log('Devices naquele topico', devices);
+    devices.map((device, i) => {
+      let deviceIdToSend = req.connectedUsers[device._id];
+      console.log('Device to send Message', deviceIdToSend)
+      req.io.to(deviceIdToSend).emit("a", message)
+    })
     res.json({ ok: 'as' })
   }
 }
