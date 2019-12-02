@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, ImageBackground, StatusBar, KeyboardAvoidingView, Image, Alert } from 'react-native';
 import { TextLink } from '../atoms';
 import { images } from '~/constants';
@@ -28,14 +28,26 @@ function Entrance({ navigation }) {
         const user_id = response._id;
         await AsyncStorage.setItem('user_id', user_id)
         console.log('User_ID', user_id)
-        navigation.navigate('MainApp')
+        navigation.navigate('MainApp');
       }
       setLoading(false);
     } catch (error) {
       console.log('ERROR LOGIN', error)
     }
-
   }
+  getId = async () => {
+    const user_id = await AsyncStorage.getItem('user_id');
+    return user_id;
+  }
+
+  useEffect(() => {
+    getId().then(res => {
+      if (res) {
+        navigation.navigate('MainApp');
+      }
+    });
+
+  }, [])
 
   return (
     <ImageBackground

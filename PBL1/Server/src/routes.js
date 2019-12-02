@@ -10,6 +10,11 @@ const routes = express.Router();
 routes.post('/subscribe', BrokerController.subscribe)
 routes.post('/publish', BrokerController.publish)
 
+//devices
+routes.get('/getAllDevices', DeviceController.getAllDevices)
+//topics
+routes.post('/subscribeInTopic', TopicController.subscribeInTopic)
+
 // session
 routes.post('/sessions', SessionController.store)
 
