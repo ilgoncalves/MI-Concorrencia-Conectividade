@@ -8,7 +8,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import { Alert } from 'react-native'
 import { Api } from '~/services/api'
 
-function CollapsibleList({ sections }) {
+function CollapsibleList({ sections, myDevice, loadMyDevices }) {
   const [activeSections, setActiveSections] = useState([])
   const [loading, setLoading] = useState(false)
   _renderHeader = (section, index, isActive, sections) => {
@@ -28,6 +28,24 @@ function CollapsibleList({ sections }) {
       console.log('RESPONSE SUBSCRIBEINTOPIC', response)
       if (response) {
         Alert.alert(response.message)
+      }
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      Alert.alert(error.message)
+      console.log('ERROR SUBSCRIBEINTOPIC', error)
+    }
+  }
+  unsubscribe = async (topic_id) => {
+    console.log(topic_id)
+    try {
+      setLoading(true);
+      const user_id = await AsyncStorage.getItem('user_id');
+      const response = await Api.post('/unsubscribeInTopic', { user_id, topic_id });
+      console.log('RESPONSE SUBSCRIBEINTOPIC', response)
+      if (response) {
+        Alert.alert(response.message)
+        loadMyDevices();
       }
       setLoading(false);
     } catch (error) {
@@ -62,8 +80,8 @@ function CollapsibleList({ sections }) {
         >
           <Button
             loading={loading}
-            label="Se Inscrever"
-            onPress={() => subscribe(section.topic_id._id)}
+            label={myDevice ? "Desinscrever" : "Se Inscrever"}
+            onPress={() => myDevice ? unsubscribe(section.topic_id._id) : subscribe(section.topic_id._id)}
             colored
           />
 

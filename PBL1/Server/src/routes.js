@@ -14,6 +14,8 @@ routes.post('/publish', BrokerController.publish)
 routes.get('/getAllDevices', DeviceController.getAllDevices)
 //topics
 routes.post('/subscribeInTopic', TopicController.subscribeInTopic)
+routes.post('/unsubscribeInTopic', TopicController.unsubscribeInTopic)
+routes.get('/getMyTopics', TopicController.getMyTopics)
 
 // session
 routes.post('/sessions', SessionController.store)

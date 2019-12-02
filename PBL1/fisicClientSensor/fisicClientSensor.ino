@@ -15,11 +15,11 @@ SocketIoClient webSocket;
 HTTPClient http;
 using namespace std;
 
-String BASE_URL = "http://192.168.15.74:3000/";
-const char *socketServer = "192.168.15.74";
+String BASE_URL = "http://192.168.43.206:3000/";
+const char *socketServer = "192.168.43.206";
 const int socketPort = 3000;
-const char *ssid = "CLUB4WORK";
-const char *password = "10421042";
+const char *ssid = "lichtgeschwindigkeit";
+const char *password = "nichtVergessen";
 
 void wifiUploadCode(){
    ArduinoOTA.setHostname("Goncalves-Esp");
@@ -87,6 +87,7 @@ void setup() {
   
   configWifi();
   String body = "topicName=test&description_device=esp8266";
+//  String body = "topicName=test2&description_device=esp8266";
   String response = httpRequest("subscribe",body);
   
   JsonObject& root = jsonBuffer.parseObject(response.c_str());

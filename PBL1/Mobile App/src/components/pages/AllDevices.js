@@ -1,31 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { View, ScrollView, ActivityIndicator, Alert } from 'react-native';
+import { View, ScrollView, ActivityIndicator, Alert, Text, RefreshControl } from 'react-native';
 import { Api } from '~/services/api'
 import { LogoHeader } from '../molecules';
 import { CollapsibleList } from '../organisms';
-
-const SECTIONS = [
-  {
-    title: 'Afinal, o óleo de coco é saudável?',
-    content: 'O assunto é polêmico. Alguns estudos apontam que, em quantidades pequenas, ele emagrece! Mas, devemos ficar atentos!',
-  },
-  {
-    title: 'Queijo branco é magro?',
-    content: 'Sim, é top!',
-  },
-  {
-    title: 'Queijo branco é magro?',
-    content: 'Sim, é top!',
-  },
-  {
-    title: 'Queijo branco é magro?',
-    content: 'Sim, é top!',
-  },
-  {
-    title: 'Queijo branco é magro?',
-    content: 'Sim, é top!',
-  }
-];
 
 function AllDevices({ navigation }) {
   const [sections, setSections] = useState([]);
@@ -50,16 +27,39 @@ function AllDevices({ navigation }) {
     getAllDevices();
   }, [])
 
+  onRefresh = () => {
+    getAllDevices();
+
+  }
+
   return (
     <View style={styles.container}>
       <LogoHeader title='Todos Dispositivos' />
-      <ScrollView contentContainerStyle={styles.content}>
+      <ScrollView
+        contentContainerStyle={[styles.content, (sections.length == 0) && { justifyContent: 'center', }]}
+        refreshControl={
+          <RefreshControl
+            tintColor='#343434'
+            refreshing={loading}
+            onRefresh={() => this.onRefresh()}
+          />
+        }
+      >
         {
           loading ? (
             <ActivityIndicator size='large' color='#343434' />
           ) : (
               <CollapsibleList sections={sections} />
             )
+        }
+        {
+          ((sections.length == 0) && (!loading)) && (
+            <Text
+              style={styles.text}
+            >
+              {`Nenhum dispositivo foi encontrado!`}
+            </Text>
+          )
         }
       </ScrollView>
     </View>
@@ -73,8 +73,13 @@ const styles = {
   },
   content: {
     flexGrow: 1,
-    padding: 20
+    padding: 20,
+
   },
+  text: {
+    fontSize: 16,
+    textAlign: 'center',
+  }
 
 }
 export { AllDevices };

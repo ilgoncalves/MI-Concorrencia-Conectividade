@@ -8,6 +8,7 @@ const Device = require('../models/Device')
 module.exports = {
   async getAllDevices(req, res) {
     let devices = await Device.find().populate('topic_id');
+    console.log('Found', devices)
     res.json(devices);
   }
 }
