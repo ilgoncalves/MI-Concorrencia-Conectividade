@@ -15,11 +15,11 @@ SocketIoClient webSocket;
 HTTPClient http;
 using namespace std;
 
-String BASE_URL = "http://172.20.10.4:3000/";
-const char *socketServer = "172.20.10.4";
+String BASE_URL = "http://192.168.15.74:3000/";
+const char *socketServer = "192.168.15.74";
 const int socketPort = 3000;
-const char *ssid = "Igor";
-const char *password = "123456789000";
+const char *ssid = "CLUB4WORK";
+const char *password = "10421042";
 
 void wifiUploadCode(){
    ArduinoOTA.setHostname("Goncalves-Esp");

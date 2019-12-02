@@ -3,6 +3,9 @@ import { View, ScrollView, Alert } from 'react-native';
 import { LogoHeader } from '../molecules';
 import { CollapsibleList, FreeRequest } from '../organisms';
 import { Api } from '~/services/api'
+import { Button } from '../atoms';
+import { Icon } from 'react-native-elements';
+import AsyncStorage from '@react-native-community/async-storage';
 
 
 const SECTIONS = [
@@ -32,6 +35,7 @@ function Config({ navigation }) {
   const [topic, setTopic] = useState('');
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
+  const [logoutLoader, setLogoutLoader] = useState(false)
 
   onSend = async () => {
     try {
@@ -48,8 +52,19 @@ function Config({ navigation }) {
       }
       setLoading(false);
     } catch (error) {
+      setLoading(false);
+      Alert.alert(error.message)
       console.log('ERROR PUBLISH TOPIC', error)
     }
+  }
+  logout = async () => {
+    setLogoutLoader(true);
+
+    await AsyncStorage.clear();
+
+    navigation.navigate('Entrance')
+    setLogoutLoader(false);
+
   }
   return (
     <View style={styles.container}>
@@ -65,6 +80,25 @@ function Config({ navigation }) {
           setMessage={setMessage}
           message={message}
           onSend={onSend}
+        />
+        <View
+          style={{
+            marginVertical: 40
+          }}
+        />
+        <Button
+          colored
+          onPress={logout}
+          loading={logoutLoader}
+          label='Deslogar'
+          icon={
+            <Icon
+              name='logout'
+              type='material-community'
+              color='#FFF'
+              size={25}
+            />
+          }
         />
       </ScrollView>
     </View>

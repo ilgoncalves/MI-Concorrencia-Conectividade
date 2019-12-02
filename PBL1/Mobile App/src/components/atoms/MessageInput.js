@@ -41,15 +41,14 @@ function MessageInput({ placeholder, onSend, inputContainerStyle, ...props }) {
       containerStyle={[styles.inputContainerStyle, inputContainerStyle]}
       underlineColorAndroid='rgba(0,0,0,0)'
       inputStyle={styles.inputStyle}
-
-      // multiline
+      autoCompleteType='off'
+      spellCheck={false}
+      autoCapitalize='none'
       placeholderTextColor='#44444445'
       inputContainerStyle={{
         justifyContent: 'center',
         alignItems: 'center',
-        // marginTop: (Platform.OS === 'ios') ? 12 : 0,
         borderBottomColor: '#00000000',
-        // paddingBottom: 12
       }}
     />
   )

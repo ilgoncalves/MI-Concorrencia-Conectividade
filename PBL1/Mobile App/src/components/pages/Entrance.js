@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, ImageBackground, StatusBar, KeyboardAvoidingView, Image, Alert } from 'react-native';
 import { TextLink } from '../atoms';
 import { images } from '~/constants';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import { LoginCard } from '../organisms';
 import Theme from '../theme/Theme';
@@ -21,11 +22,11 @@ function Entrance({ navigation }) {
         setLoading(false);
         return Alert.alert('É necessario digitar um email válido!')
       }
-
       const response = await Api.post('/sessions', { email: email });
       console.log('log', response)
       if (response) {
         const user_id = response._id;
+        await AsyncStorage.setItem('user_id', user_id)
         console.log('User_ID', user_id)
         navigation.navigate('MainApp')
       }

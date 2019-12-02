@@ -2,7 +2,7 @@ import React from 'react';
 import { View, TouchableOpacity, Text, ActivityIndicator } from 'react-native';
 import Theme from '../theme/Theme';
 
-function Button({ label, onPress, colored, containerStyle, loading }) {
+function Button({ label, onPress, colored, containerStyle, loading, icon }) {
   return (
     <TouchableOpacity
       onPress={onPress}
@@ -15,8 +15,11 @@ function Button({ label, onPress, colored, containerStyle, loading }) {
         ]}
       >
         {
+          (icon && !loading) && icon
+        }
+        {
           loading ? (
-            <ActivityIndicator color='#FFF' size={20} />
+            <ActivityIndicator color='#FFF' size={25} />
           ) : (
               <Text
                 style={[
@@ -40,7 +43,10 @@ const styles = {
     paddingRight: 16,
     paddingTop: 12,
     paddingBottom: 12,
-    borderRadius: 8
+    borderRadius: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   label: {
     fontSize: 18,

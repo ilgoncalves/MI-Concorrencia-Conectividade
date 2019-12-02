@@ -17,9 +17,11 @@ function Input({ label, reference, ...rest }) {
         disableFullscreenUI
         autoCompleteType='off'
         spellCheck={false}
-        underlineColorAndroid='#00000000'
         autoCapitalize='none'
+        placeholderTextColor='#44444445'
+        underlineColorAndroid='#00000000'
         placeholder={hasFocus ? '' : label}
+
         onFocus={() => setHasFocus(true)}
         onBlur={() => setHasFocus(false)}
         style={[styles.input, { borderBottomColor: hasFocus ? Theme.primary : '#D9D9D9' }]}
@@ -31,7 +33,7 @@ function Input({ label, reference, ...rest }) {
 
 const styles = {
   input: {
-
+    color: '#34343490',
     borderBottomWidth: 2,
     backgroundColor: 'rgba(0, 0, 0, 0.005)',
     // borderRadius: 8,

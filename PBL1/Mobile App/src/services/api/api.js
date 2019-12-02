@@ -35,7 +35,7 @@ export class Api {
   }
 
   static xhr(route, params, verb, header) {
-    const host = 'http://172.20.10.4:3000';
+    const host = 'http://192.168.15.74:3000';
     const url = `${host}${route}`;
     let options = Object.assign({ method: verb }, params ? { body: (header && header['Content-Type'] === 'multipart/form-data') ? params : JSON.stringify(params) } : null);
     options.headers = Api.headers()

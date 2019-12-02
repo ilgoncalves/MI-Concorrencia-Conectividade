@@ -62,6 +62,9 @@ module.exports = {
     const { message, topicName } = req.body;
     console.log('Usuarios conectados', req.connectedUsers);
     let topic = await Topic.findOne({ topicName });
+    if (!topic) {
+      return res.status(404).send({ message: 'Ninguém está inscrito nesse tópico!' });
+    }
     //pega o id do topico e acha o device ou o usuario 
     let devices = await Device.find({ topic_id: topic._id });
     console.log('Devices naquele topico', devices);
