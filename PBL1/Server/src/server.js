@@ -20,10 +20,8 @@ mongoose.connect(`mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@cluster0-odgx6.mon
 
 const connectedUsers = {};
 
-
 io.on('connection', socket => {
     if (socket.handshake) {
-
         console.log('ids', socket.handshake.query)
         const { user_id, device_id } = socket.handshake.query;
         if (user_id) {
